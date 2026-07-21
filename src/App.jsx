@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-     <div>Now we are going to bulid the website</div>
+     <div>Now we are going to bulid the websites </div>
     </>
   )
 }
