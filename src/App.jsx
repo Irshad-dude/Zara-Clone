@@ -1,4 +1,7 @@
+import { Routes, Route } from "react-router-dom";
 import { useState } from 'react'
+import Home from "./pages/Home";
+import Occasion from "./pages/Occasion";
 import './App.css'
 
 function App() {
@@ -6,6 +9,10 @@ function App() {
 
   return (
     <>
+       <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/occasions" element={<Occasion />} />
+    </Routes>
      
     </>
   )
