@@ -1,6 +1,8 @@
 import image from "../assets/image.png";
 import screen1 from "../assets/screen1.png";
 import screen2 from "../assets/screen2.png";
+import {Link} from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 export default function Hero() {
   return (
     <section>
@@ -62,9 +64,11 @@ export default function Hero() {
           offering a curated collection that defines oo contemporary elegance.
         </h1>
         <div className="flex w-full h-20 gap-12 justify-center  mt-8">
+          <Link to = "/collection" >
           <button className="w-40 h-12 rounded-full border border-black bg-[#DFFF00] flex items-center justify-center text-black">
             View Collection
           </button>
+          </Link>
           <h1 className="text-x w-60 h-12 ">
             Discover Fashion Excellence: Your Destination for Trendsetting
             Apparel
@@ -76,9 +80,11 @@ export default function Hero() {
           <div className="w-60 h-12  text-black text-xl ">
             Our New Collection
           </div>
+          <Link to="/collection">
           <div className="w-36 h-5  border-black border-b ">
             View All Collection
           </div>
+          </Link>
         </div>
         <div className="flex gap-8 p-4">
           <div className="flex flex-1 bg-[#F5F5F5] rounded-3xl overflow-hidden p-5">
