@@ -7,25 +7,25 @@ import screen11 from "../assets/screen11.png";
 import screen12 from "../assets/screen12.png";
 import screen13 from "../assets/screen13.png";
 import screen14 from "../assets/screen14.png";
-// className ="w- h- bg-[#] rounded- border"
-// className ="text- text- bg-[#] font-"
+// className ="w- h-  rounded- border"
+// className ="text- text-  font-"
 
 export default function Collection() {
   return (
     <>
       <Navbar />
       <section className="flex flex-col gap-16 pt-18">
-        <div className="w-full  h-140 bg-[#]  relative flex items-center ">
+        <div className="w-full  h-140   relative flex items-center ">
           <img
             src={screen2}
             alt="Search"
             className="w-full h-full object-cover  transition-transform duration-300 hover:scale-100"
           />
           <div className=" absolute w-140 h-60  ml-12 flex flex-col gap-4">
-            <h1 className="text-black text-6xl bg-[#] font-bold">
+            <h1 className="text-black text-6xl  font-bold">
               The New Narrative
             </h1>
-            <p className="text-[#4d5f2f] text- bg-[#] font- w-100">
+            <p className="text-[#4d5f2f] text-  font- w-100">
               Exploring the intersection of architectural structure and fluid
               movement. Our latest collection redefines the avant-garde
               silhouette for the modern wardrobe.
@@ -41,7 +41,7 @@ export default function Collection() {
           </div>
         </div>
         {/* 2 */}
-        <div className="w-full  h-240 bg-[#] p-6 ">
+        <div className="w-full  h-240  p-6  ">
           <h3 className="text-[14px] text-[#5c7238] font-medium">
             SPRING/SUMMER 24
           </h3>
@@ -57,64 +57,74 @@ export default function Collection() {
             </div>
           </div>
           <div className="w-full h-230 pt-12 flex gap-12">
-            <div className=" group relative w-120 h-150 bg-[#] rounded-2xl">
-              <div className =" absolute  w-44 h-6 bg-[#DFFF00] rounded-full text-center text-[15px]">EDITORIAL PICK</div>
+            <div className=" group relative w-120 h-150  rounded-2xl">
+              <div className=" absolute  w-44 h-6 bg-[#DFFF00] rounded-full text-center text-[15px]">
+                EDITORIAL PICK
+              </div>
               <img
                 src={screen14}
                 alt="Search"
                 className="w-full h-130 object-cover rounded-2xl  transition-transform duration-300 hover:scale-100"
               />
-              <div className ="absolute bottom-24 right-4 w-14 h-14 bg-[#DFFF00] rounded-full text-[30px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">+</div>
+              <div className="absolute bottom-24 right-4 w-14 h-14 bg-[#DFFF00] rounded-full text-[30px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
+                +
+              </div>
               <div className="flex justify-between pt-2">
-                <h1 className="text-black text-2xl bg-[#] font-medium">
+                <h1 className="text-black text-2xl  font-medium">
                   Stretchy Oxford Shirt
                 </h1>
                 <h1 className="text-[#4d5f2f] ">$185.00</h1>
               </div>
-              <p className="text-[13px] text- bg-[#] font-">
+              <p className="text-[13px] text-  font-">
                 Modern tailoring, unparalleled comfort.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-12 ">
-              <div className="relative group w-60 h-94 bg-[#] rounded- borde">
+              <div className="relative group w-60 h-94  rounded- borde">
                 <img
                   src={screen13}
                   alt="Search"
                   className="w-full h-80 object-cover rounded-2xl  transition-transform duration-300 hover:scale-100"
                 />
-                <div className ="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">+</div>
+                <div className="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
+                  +
+                </div>
                 <div className=" pt-2">
-                  <h1 className="text-black text-l bg-[#] font-medium">
+                  <h1 className="text-black text-l  font-medium">
                     Oversize Linen Blend Shirt
                   </h1>
                   <h1 className="text-[#4d5f2f] ">$145.00</h1>
                 </div>
               </div>
 
-              <div className="relative group w-60 h-94 bg-[#] rounded- borde">
+              <div className="relative group w-60 h-94  rounded- borde">
                 <img
                   src={screen12}
                   alt="Search"
                   className="w-full h-80 object-cover rounded-2xl  transition-transform duration-300 hover:scale-100"
                 />
-                        <div className ="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">+</div>
+                <div className="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
+                  +
+                </div>
                 <div className=" pt-2">
-                  <h1 className="text-black text-l bg-[#] font-medium">
+                  <h1 className="text-black text-l  font-medium">
                     Modular Utility Vest
                   </h1>
                   <h1 className="text-[#4d5f2f] ">$101.00</h1>
                 </div>
               </div>
 
-              <div className="relative group w-60 h-94 bg-[#] rounded- borde">
+              <div className="relative group w-60 h-94  rounded- borde">
                 <img
                   src={screen10}
                   alt="Search"
                   className="w-full h-80 object-cover rounded-2xl  transition-transform duration-300 hover:scale-100"
                 />
-                        <div className ="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">+</div>
+                <div className="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
+                  +
+                </div>
                 <div className=" pt-2">
-                  <h1 className="text-black text-l bg-[#] font-medium">
+                  <h1 className="text-black text-l  font-medium">
                     Architectural Trouser
                   </h1>
                   <h1 className="text-[#4d5f2f] ">$165.00</h1>
@@ -122,15 +132,17 @@ export default function Collection() {
               </div>
 
               <div className="w-60 h-94 bg-[#E1E1F5] rounded-2xl p-6 flex flex-col gap-8">
-                <div className="w-12 h-12 bg-[#DFFF00] rounded-full text-[30px] flex justify-center items-center">+</div>
-                <h1 className="text-3xl text-black bg-[#] font-medium">
+                <div className="w-12 h-12 bg-[#DFFF00] rounded-full text-[30px] flex justify-center items-center">
+                  +
+                </div>
+                <h1 className="text-3xl text-black  font-medium">
                   Discover the Fit Guide
                 </h1>
                 <p>
                   Find your perfect avant-garde silhouette with our interactive
                   sizing tool.
                 </p>
-                <h1 className="text- text-[#4d5f2f]  bg-[#] font-medium underline">
+                <h1 className="text- text-[#4d5f2f]   font-medium underline">
                   {" "}
                   Explore Now↗{" "}
                 </h1>
@@ -140,7 +152,7 @@ export default function Collection() {
         </div>
         {/* 3 */}
         <div className="w-full h-120 bg-[#F3F3F3] rounded-  flex">
-          <div className="relative w-120 h-120 bg-[#]  flex justify-center items-center">
+          <div className="relative w-120 h-120   flex justify-center items-center">
             <div className="w-70 h-70 ">
               <img
                 src={screen11}
@@ -156,14 +168,14 @@ export default function Collection() {
               />
             </div>
           </div>
-          <div className="w- h- bg-[#] rounded-  pt-22 flex flex-col gap-8">
-            <h3 className="text-[14px] text-[#4d5f2f] bg-[#] font-">
+          <div className="w- h-  rounded-  pt-22 flex flex-col gap-8">
+            <h3 className="text-[14px] text-[#4d5f2f]  font-">
               FABRIC & CRAFT
             </h3>
-            <h1 className="text-6xl text-black bg-[#] font-medium">
+            <h1 className="text-6xl text-black  font-medium">
               The Alchemy of Linen
             </h1>
-            <p className="w-140 text- bg-[#] ">
+            <p className="w-140 text-  ">
               Our new linen-blend garments are treated with a proprietary
               stone-wash process, resulting in a fabric that flows like water
               yet retains its structural integrity. It's breathable,
@@ -171,13 +183,13 @@ export default function Collection() {
             </p>
             <div className="flex flex-between gap-8 w-">
               <div>
-                <h1 className="text text-black bg-[#] font-medium">
+                <h1 className="text text-black  font-medium">
                   Sustainable Sourcing
                 </h1>
                 <h3 className="text">100% Traceable European flax.</h3>
               </div>
               <div>
-                <h1 className="text text-black bg-[#] font-medium">
+                <h1 className="text text-black  font-medium">
                   Artisan Finish
                 </h1>
                 <h3>Hand-finished seams and buttons.</h3>
@@ -188,7 +200,7 @@ export default function Collection() {
             </button>
           </div>
         </div>
-      <Footer/>
+        <Footer />
       </section>
     </>
   );

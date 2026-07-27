@@ -55,19 +55,7 @@ export default function Navbar() {
           >
             OCCASIONS
           </NavLink>
-
-          <NavLink
-            to="/stock"
-            className={({ isActive }) =>
-              isActive
-                ? "text-black border-b-2 border-black font-bold"
-                : "text-[#64748B] hover:border-b-2 hover:border-black transition-all duration-200"
-            }
-          >
-            LIMITED STOCK
-          </NavLink>
         </div>
-
         <div className="w-10">
           <img src={search} alt="Search" className="w-4 h-4" />
         </div>
