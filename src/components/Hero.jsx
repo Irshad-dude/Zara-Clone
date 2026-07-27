@@ -87,7 +87,7 @@ export default function Hero() {
           </Link>
         </div>
         <div className="flex gap-8 p-4">
-          <div className="flex flex-1 bg-[#F5F5F5] rounded-3xl overflow-hidden p-5">
+          <div className="flex flex-1 bg-[#E1E1F5]  rounded-3xl overflow-hidden p-5">
             <img
               src={screen1}
               alt="Product"
