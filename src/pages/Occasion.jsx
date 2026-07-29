@@ -5,6 +5,7 @@ import screen3 from "../assets/screen3.png";
 import screen4 from "../assets/screen4.png";
 import screen5 from "../assets/screen5.png";
 import screen6 from "../assets/screen6.png";
+import screen18 from "../assets/screen18.png";
 import { Link } from "react-router-dom";
 // className="w- h- border border-black rounded- bg-[#]"
 // className="text- text-[] m"
@@ -91,31 +92,36 @@ function Occasion() {
     <>
       <Navbar />
       <section className=" p-12 pt-24 flex flex-col gap-20 bg-white">
-        <div className="w-full h-100  rounded-2xl bg-[#EDEDE8] flex gap-12 ">
-          <div className="w-140 h-100  rounded-tl-2xl rounded-bl-2xl bg-[#E1E1F5] p-12  flex flex-col gap-4 ">
-            <div className="w-60 h-10 border border-black rounded-full bg-[#DFFF00] text-center text-[16px]">
-              CURATED COLLECTIONS
+        <div className="relative flex">
+          <div className="w-140 h-100 rounded-l-2xl bg-[#E1E1F5] p-12 flex flex-col gap-4 z-10">
+            <div className="w-60 h-10 rounded-full flex items-center justify-center text-[18px] font-medium">
+              ⎯⎯  CURATED COLLECTIONS
             </div>
-            <h2 className="w- h- rounded- bg-[#] text-6xl font-bold text-black ">
+            <h2 className="text-6xl font-bold text-black">
               Dress for Every Narrative.
             </h2>
-            <p className="text-xl">
+            <p className="text-xl text-gray-600">
               From weekend whispers to boardroom power plays, ZARE defines the
               silhouette of your contemporary lifestyle.
             </p>
             <div className="flex gap-4">
               <Link to="/collection">
-              <button className="w-36 h-14 border border-black rounded-full bg-[#DFFF00]">
-                Explore All
-              </button>
+                <button className="w-36 h-14 rounded-full bg-[#DFFF00] border border-black">
+                  Explore All
+                </button>
               </Link>
-              <button className="w-52 h-14 border border-black rounded-full text-black ">
+              <button className="w-52 h-14 rounded-full border border-black hover:bg-black hover:text-white">
                 View Lookbook
               </button>
             </div>
           </div>
-          <div className=" ml-30 overflow-hidden  rounded-xl">
-            {/* image */}
+          <div className="relative w-160 h-100 overflow-hidden rounded-r-2xl">
+            <img
+              src={screen18}
+              alt=""
+              className="w-full h-full object-cover brightness-95"
+            />
+            <div className="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-[#E1E1F5] via-[#E1E1F5]/60 to-transparent"></div>
           </div>
         </div>
         <div className=" w-full h-200 bg-[#]">
@@ -150,9 +156,11 @@ function Occasion() {
           {/* I continue the work from there. */}
           <div className="grid grid-cols-4 gap-4">
             {Object.entries(categoryData).map(([key, data]) => (
-              <div className={`w-60 h-70   mt-10 p-4 flex flex-col gap-2 rounded-2xl  justify-between hover:bg-[#DFFF00] ${
-    data.isHighlighted ? "bg-[#DFFF00] " : "bg-[#F3F3F3]"
-  }  `}>
+              <div
+                className={`w-60 h-70   mt-10 p-4 flex flex-col gap-2 rounded-2xl  justify-between hover:bg-[#DFFF00] ${
+                  data.isHighlighted ? "bg-[#DFFF00] " : "bg-[#F3F3F3]"
+                }  `}
+              >
                 <div>
                   <h1 className="text-3xl text-black font-bold">
                     {data.title}
@@ -176,10 +184,10 @@ function Occasion() {
             <h1 className="text-3xl text-black font-bold m">
               In the Spotlight: Work Essentials
             </h1>
-            <Link to="/collection" >
-            <h1 className="text-s text-[#829505] font-thin m hover:underline">
-              View All Collection ➤
-            </h1>
+            <Link to="/collection">
+              <h1 className="text-s text-[#829505] font-thin m hover:underline">
+                View All Collection ➤
+              </h1>
             </Link>
           </div>
           <div className="flex gap-6">
@@ -191,7 +199,9 @@ function Occasion() {
                     alt={data.title}
                     className="w-full h-80   rounded-2xl object-cover"
                   />
-                       <div className ="absolute top-2 right-3 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">+</div>
+                  <div className="absolute top-2 right-3 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
+                    +
+                  </div>
                 </div>
                 <div className="mt-4">
                   <p className="text-black text-l  m">{data.title}</p>
