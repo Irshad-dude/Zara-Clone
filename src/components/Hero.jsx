@@ -1,7 +1,7 @@
 import image from "../assets/image.png";
 import screen1 from "../assets/screen1.png";
 import screen2 from "../assets/screen2.png";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 export default function Hero() {
   return (
@@ -24,7 +24,24 @@ export default function Hero() {
               <h1 className="text-[70px] ">fashion destination </h1>
             </div>
             <div className="flex gap-8 mt-8">
-              <div className="w-20 h-20 bg-[#DFFF00] rounded-full"></div>
+              <div className="relative w-20 h-20 bg-[#DFFF00] rounded-full flex items-center justify-center">
+                <svg
+                  className="absolute inset-0 w-full h-full animate-[spin_5s_linear_infinite]"
+                  viewBox="0 0 100 100"
+                >
+                  <defs>
+                    <path
+                      id="circle"
+                      d="M50,50 m-32,0 a32,32 0 1,1 64,0 a32,32 0 1,1 -64,0"
+                    />
+                  </defs>
+                  <text fontSize="10" fontWeight="medium">
+                    <textPath href="#circle">
+                      BLACK FRIDAY 50% OFF BLACK FRIDAY 50% OFF
+                    </textPath>
+                  </text>
+                </svg>
+              </div>
               <h1 className="text-[14px] w-80 ">
                 Explore an extensive collection, curated to redefine your
                 wardrobe. Elevate your fashion quotient effortlessly.
@@ -64,10 +81,10 @@ export default function Hero() {
           offering a curated collection that defines oo contemporary elegance.
         </h1>
         <div className="flex w-full h-20 gap-12 justify-center  mt-8">
-          <Link to = "/collection" >
-          <button className="w-40 h-12 rounded-full border border-black bg-[#DFFF00] flex items-center justify-center text-black">
-            View Collection
-          </button>
+          <Link to="/collection">
+            <button className="w-40 h-12 rounded-full border border-black bg-[#DFFF00] flex items-center justify-center text-black hover:bg-[#b8d400] ">
+              View Collection
+            </button>
           </Link>
           <h1 className="text-x w-60 h-12 ">
             Discover Fashion Excellence: Your Destination for Trendsetting
@@ -81,9 +98,9 @@ export default function Hero() {
             Our New Collection
           </div>
           <Link to="/collection">
-          <div className="w-36 h-5  border-black border-b ">
-            View All Collection
-          </div>
+            <div className="w-36 h-5  border-black border-b ">
+              View All Collection
+            </div>
           </Link>
         </div>
         <div className="flex gap-8 p-4">

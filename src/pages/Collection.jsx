@@ -48,10 +48,10 @@ export default function Collection() {
           <div className="flex justify-between pt-5">
             <h1 className="text-[50px] text-black font-bold">New In</h1>
             <div className="flex gap-4 text-black text-thin">
-              <div className="w-10 h-10 border-[#5c7238] rounded-full border flex text-[25px] justify-center items-center ">
+              <div className="w-10 h-10 border-[#5c7238] rounded-full border flex text-[25px] justify-center items-center hover:bg-black hover:text-white ">
                 ←
               </div>
-              <div className="w-10 h-10 rounded-full border border-[#5c7238] flex text-[25px] justify-center items-center  ">
+              <div className="w-10 h-10 rounded-full border border-[#5c7238] flex text-[25px] justify-center items-center  hover:bg-black hover:text-white  ">
                 →
               </div>
             </div>

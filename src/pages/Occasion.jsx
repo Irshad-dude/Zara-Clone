@@ -14,7 +14,7 @@ function Occasion() {
       title: "Casual Comforts",
       subtitle: "Elevated everyday essentials.",
       linkText: "Explore Category",
-      isHighlighted: false,
+      isHighlighted: true,
     },
     evening: {
       title: "Evening Elegance",
@@ -45,14 +45,14 @@ function Occasion() {
       subtitle:
         "Elevate your professional silhouette with tailored excellence.",
       linkText: "Shop Professional",
-      isHighlighted: true,
+      isHighlighted: false,
       icon: "briefcase",
     },
     formal: {
       title: "Formal Attire",
       subtitle: "Impeccable tailoring for big moments.",
       linkText: "Explore Category",
-      isHighlighted: false,
+      isHighlighted: true,
     },
     seasonal: {
       title: "Seasonal Trends",
@@ -150,7 +150,9 @@ function Occasion() {
           {/* I continue the work from there. */}
           <div className="grid grid-cols-4 gap-4">
             {Object.entries(categoryData).map(([key, data]) => (
-              <div className="w-60 h-70  bg-[#F3F3F3] mt-10 p-4 flex flex-col gap-2 rounded-2xl  justify-between hover:bg-[#DFFF00] ">
+              <div className={`w-60 h-70   mt-10 p-4 flex flex-col gap-2 rounded-2xl  justify-between hover:bg-[#DFFF00] ${
+    data.isHighlighted ? "bg-[#DFFF00] " : "bg-[#F3F3F3]"
+  }  `}>
                 <div>
                   <h1 className="text-3xl text-black font-bold">
                     {data.title}
@@ -175,7 +177,7 @@ function Occasion() {
               In the Spotlight: Work Essentials
             </h1>
             <Link to="/collection" >
-            <h1 className="text-s text-[#829505] font-thin m">
+            <h1 className="text-s text-[#829505] font-thin m hover:underline">
               View All Collection ➤
             </h1>
             </Link>
