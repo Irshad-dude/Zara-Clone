@@ -7,10 +7,33 @@ import screen11 from "../assets/screen11.png";
 import screen12 from "../assets/screen12.png";
 import screen13 from "../assets/screen13.png";
 import screen14 from "../assets/screen14.png";
+import {motion} from "framer-motion"
 // className ="w- h-  rounded- border"
 // className ="text- text-  font-"
+const text ="The New Narrative".split("");
+const text1 ="  Our new linen-blend garments are treated with a proprietary stone-wash process, resulting in a fabric that flows like water yet retains its structural integrity. It's breathable, sustainable, and designed to age with character.".split("")
 
 export default function Collection() {
+  const products = [
+  {
+    id: 1,
+    title: "Oversize Linen Blend Shirt",
+    price: "$145.00",
+    image: screen13,
+  },
+  {
+    id: 2,
+    title: "Modular Utility Vest",
+    price: "$101.00",
+    image: screen12,
+  },
+  {
+    id: 3,
+    title: "Architectural Trouser",
+    price: "$165.00",
+    image: screen10,
+  },
+];
   return (
     <>
       <Navbar />
@@ -23,7 +46,28 @@ export default function Collection() {
           />
           <div className=" absolute w-140 h-60  ml-12 flex flex-col gap-4">
             <h1 className="text-black text-6xl  font-bold">
-              The New Narrative
+              {text.map((letter, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{
+                      filter: "blur(3px)",
+                      scale: 0.7,
+                      opacity: 0.5,
+                    }}
+                    animate={{
+                      filter: ["blur(4px)", "blur(0px)"],
+                      opacity: [0.5, 1],
+                    }}
+                    transition={{
+                      duration: 1,
+                      delay: index * 0.3,
+                      ease: "linear",
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
             </h1>
             <p className="text-[#4d5f2f] text-  font- w-100">
               Exploring the intersection of architectural structure and fluid
@@ -57,7 +101,15 @@ export default function Collection() {
             </div>
           </div>
           <div className="w-full h-230 pt-12 flex gap-12">
-            <div className=" group relative w-120 h-150  rounded-2xl">
+            <motion.div
+              initial={{ scale: 0.7 }}
+            whileInView={{ scale: 1 }}
+            transition={{
+              duration: 3,
+              type: "spring",
+            }}
+
+             className=" group relative w-120 h-150  rounded-2xl">
               <div className=" absolute  w-44 h-6 bg-[#DFFF00] rounded-full text-center text-[15px]">
                 EDITORIAL PICK
               </div>
@@ -78,12 +130,20 @@ export default function Collection() {
               <p className="text-[13px] text-  font-">
                 Modern tailoring, unparalleled comfort.
               </p>
-            </div>
+            </motion.div>
             <div className="grid grid-cols-2 gap-12 ">
-              <div className="relative group w-60 h-94  rounded- borde">
+             {products.map((product) => (
+              <motion.div 
+               initial={{ scale: 0.7 }}
+            whileInView={{ scale: 1 }}
+            transition={{
+              duration: 3,
+              type: "spring",
+            }}
+               key={product.id} className="relative group w-60 h-94  rounded- borde">
                 <img
-                  src={screen13}
-                  alt="Search"
+                  src={product.image}
+                  alt={product.title}
                   className="w-full h-80 object-cover rounded-2xl  transition-transform duration-300 hover:scale-100"
                 />
                 <div className="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
@@ -91,47 +151,21 @@ export default function Collection() {
                 </div>
                 <div className=" pt-2">
                   <h1 className="text-black text-l  font-medium">
-                    Oversize Linen Blend Shirt
+                    {product.title}
                   </h1>
-                  <h1 className="text-[#4d5f2f] ">$145.00</h1>
+                  <h1 className="text-[#4d5f2f] ">{product.price}</h1>
                 </div>
-              </div>
+              </motion.div>
+  ))}
 
-              <div className="relative group w-60 h-94  rounded- borde">
-                <img
-                  src={screen12}
-                  alt="Search"
-                  className="w-full h-80 object-cover rounded-2xl  transition-transform duration-300 hover:scale-100"
-                />
-                <div className="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
-                  +
-                </div>
-                <div className=" pt-2">
-                  <h1 className="text-black text-l  font-medium">
-                    Modular Utility Vest
-                  </h1>
-                  <h1 className="text-[#4d5f2f] ">$101.00</h1>
-                </div>
-              </div>
-
-              <div className="relative group w-60 h-94  rounded- borde">
-                <img
-                  src={screen10}
-                  alt="Search"
-                  className="w-full h-80 object-cover rounded-2xl  transition-transform duration-300 hover:scale-100"
-                />
-                <div className="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
-                  +
-                </div>
-                <div className=" pt-2">
-                  <h1 className="text-black text-l  font-medium">
-                    Architectural Trouser
-                  </h1>
-                  <h1 className="text-[#4d5f2f] ">$165.00</h1>
-                </div>
-              </div>
-
-              <div className="w-60 h-94 bg-[#E1E1F5] rounded-2xl p-6 flex flex-col gap-8">
+              <motion.div
+               initial={{ scale: 0.7 }}
+            whileInView={{ scale: 1 }}
+            transition={{
+              duration: 3,
+              type: "spring",
+            }}
+               className="w-60 h-94 bg-[#E1E1F5] rounded-2xl p-6 flex flex-col gap-8">
                 <div className="w-12 h-12 bg-[#DFFF00] rounded-full text-[30px] flex justify-center items-center">
                   +
                 </div>
@@ -146,7 +180,8 @@ export default function Collection() {
                   {" "}
                   Explore Now↗{" "}
                 </h1>
-              </div>
+              </motion.div>
+       
             </div>
           </div>
         </div>
@@ -176,10 +211,28 @@ export default function Collection() {
               The Alchemy of Linen
             </h1>
             <p className="w-140 text-  ">
-              Our new linen-blend garments are treated with a proprietary
-              stone-wash process, resulting in a fabric that flows like water
-              yet retains its structural integrity. It's breathable,
-              sustainable, and designed to age with character.
+                 {text1.map((letter, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{
+                      filter: "blur(3px)",
+                      scale: 0.7,
+                      opacity: 0.5,
+                    }}
+                    animate={{
+                      filter: ["blur(4px)", "blur(0px)"],
+                      opacity: [0.5, 1],
+                    }}
+                    transition={{
+                      duration: 1,
+                      delay: index * 0.03,
+                      ease: "linear",
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
             </p>
             <div className="flex flex-between gap-8 w-">
               <div>

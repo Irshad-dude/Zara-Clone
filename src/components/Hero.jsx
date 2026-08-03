@@ -2,11 +2,26 @@ import image from "../assets/image.png";
 import screen1 from "../assets/screen1.png";
 import screen2 from "../assets/screen2.png";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Routes, Route } from "react-router-dom";
+const text =
+  "Fueling fashion aspirations, our platform embodies style evolution offering a curated collection that defines oo contemporary elegance.".split(
+    "",
+  );
+const text1 =
+  "Explore an extensive collection, curated to redefine your wardrobe. Elevate your fashion quotient effortlessly.".split(
+    "",
+  );
 export default function Hero() {
   return (
     <section>
-      <div className="w-[1450px] h-[700px] bg-[#EDC7FF] ">
+      <motion.div
+        initial={{ opacity: 0, y: 80 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5 }}
+        viewport={{ once: true }}
+        className="w-[1450px] h-[700px] bg-[#EDC7FF] "
+      >
         <div className="flex p-12 gap-16 ">
           <div className="max-w-sm w-full h-[500px] bg-[#542772]/80 rounded-2xl mt-20 p-4 shadow-xl flex flex-col">
             <div className="w-full h-full overflow-hidden rounded-xl">
@@ -43,8 +58,28 @@ export default function Hero() {
                 </svg>
               </div>
               <h1 className="text-[14px] w-80 ">
-                Explore an extensive collection, curated to redefine your
-                wardrobe. Elevate your fashion quotient effortlessly.
+                {text1.map((letter, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{
+                      filter: "blur(3px)",
+                      scale: 0.7,
+                      opacity: 0.5,
+                    }}
+                    animate={{
+                      filter: ["blur(4px)", "blur(0px)"],
+                      opacity: [0.5, 1],
+                    }}
+                    transition={{
+                      duration: 1,
+                      delay: index * 0.04,
+                      ease: "linear",
+                    }}
+                    viewport={{ once: true }}
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
               </h1>
             </div>
             <div className="flex items-center justify-center text-sm font-medium gap-4 mt-16">
@@ -74,11 +109,35 @@ export default function Hero() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       <div className="w-full h-100 bg-white ">
-        <h1 className="text-5xl  pt-20 pl-16 text-black ">
-          Fueling fashion aspirations, our platform embodies style evolution,
-          offering a curated collection that defines oo contemporary elegance.
+        <h1 className="text-5xl  pt-20 pl-16 text-black">
+          {text.map((letter, index) => (
+            <motion.span
+              key={index}
+              initial={{
+                filter: "blur(3px)",
+                scale: 0.7,
+                opacity: 0.5,
+              }}
+              animate={{
+                filter: ["blur(4px)", "blur(0px)"],
+                opacity: [0.5, 1],
+              }}
+              whileInView={{
+                opacity: 0.9,
+                scale: 1,
+              }}
+              transition={{
+                duration: 1,
+                delay: index * 0.06,
+                ease: "linear",
+              }}
+              viewport={{ once: true }}
+            >
+              {letter}
+            </motion.span>
+          ))}
         </h1>
         <div className="flex w-full h-20 gap-12 justify-center  mt-8">
           <Link to="/collection">
@@ -86,10 +145,25 @@ export default function Hero() {
               View Collection
             </button>
           </Link>
-          <h1 className="text-x w-60 h-12 ">
+          <motion.h1
+            initial={{
+              opacity: 0,
+              filter: "blur(10px)",
+            }}
+            whileInView={{
+              opacity: 1,
+              filter: "blur(0px)",
+            }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+            }}
+            viewport={{ once: true }}
+            className="text-x w-60 h-12 "
+          >
             Discover Fashion Excellence: Your Destination for Trendsetting
             Apparel
-          </h1>
+          </motion.h1>
         </div>
       </div>
       <div className="w-full h-150 ">
@@ -104,7 +178,16 @@ export default function Hero() {
           </Link>
         </div>
         <div className="flex gap-8 p-4">
-          <div className="flex flex-1 bg-[#E1E1F5]  rounded-3xl overflow-hidden p-5">
+          <motion.div
+            initial={{ scale: 0.7 }}
+            whileInView={{ scale: 1 }}
+            transition={{
+              duration: 3,
+              type: "spring",
+            }}
+            viewport={{ once: true }}
+            className="flex flex-1 bg-[#E1E1F5]  rounded-3xl overflow-hidden p-5"
+          >
             <img
               src={screen1}
               alt="Product"
@@ -119,8 +202,17 @@ export default function Hero() {
                 Buy
               </button>
             </div>
-          </div>
-          <div className="w-[380px] bg-[#F5F5F5] rounded-3xl p-5 flex flex-col">
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0.7 }}
+            whileInView={{ scale: 1 }}
+            transition={{
+              duration: 3,
+              type: "spring",
+            }}
+            viewport={{ once: true }}
+            className="w-[380px] bg-[#F5F5F5] rounded-3xl p-5 flex flex-col"
+          >
             <div className="flex justify-between items-center">
               <div>
                 <h2 className="text-xl font-semibold">
@@ -137,7 +229,7 @@ export default function Hero() {
               alt="Product"
               className="w-full h-48 object-cover rounded-2xl mt-5 hover:scale-105 duration-300"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

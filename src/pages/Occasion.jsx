@@ -7,8 +7,10 @@ import screen5 from "../assets/screen5.png";
 import screen6 from "../assets/screen6.png";
 import screen18 from "../assets/screen18.png";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 // className="w- h- border border-black rounded- bg-[#]"
 // className="text- text-[] m"
+const text = "Dress for Every Narrative.".split("");
 function Occasion() {
   const categoryData = {
     casual: {
@@ -95,10 +97,31 @@ function Occasion() {
         <div className="relative flex">
           <div className="w-140 h-100 rounded-l-2xl bg-[#E1E1F5] p-12 flex flex-col gap-4 z-10">
             <div className="w-60 h-10 rounded-full flex items-center justify-center text-[18px] font-medium">
-              ⎯⎯  CURATED COLLECTIONS
+              ⎯⎯ CURATED COLLECTIONS
             </div>
             <h2 className="text-6xl font-bold text-black">
-              Dress for Every Narrative.
+              {text.map((letter, index) => (
+                <motion.span
+                  key={index}
+                  initial={{
+                    filter: "blur(3px)",
+
+                    opacity: 0.5,
+                  }}
+                  animate={{
+                    filter: ["blur(4px)", "blur(0px)"],
+                    opacity: [0.5, 1],
+                  }}
+                  transition={{
+                    duration: 1,
+                    delay: index * 0.03,
+                    ease: "linear",
+                  }}
+                  viewport={{ once: true }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
             </h2>
             <p className="text-xl text-gray-600">
               From weekend whispers to boardroom power plays, ZARE defines the
@@ -156,9 +179,16 @@ function Occasion() {
           {/* I continue the work from there. */}
           <div className="grid grid-cols-4 gap-4">
             {Object.entries(categoryData).map(([key, data]) => (
-              <div
+              <motion.div
+                initial={{ scale: 0.7 }}
+                whileInView={{ scale: 1 }}
+                transition={{
+                  duration: 3,
+                  type: "spring",
+                }}
+                viewport={{ once: true }}
                 className={`w-60 h-70   mt-10 p-4 flex flex-col gap-2 rounded-2xl  justify-between hover:bg-[#DFFF00] ${
-                  data.isHighlighted ? "bg-[#DFFF00] " : "bg-[#F3F3F3]"
+                  data.isHighlighted ? "bg-[#E1E1F5]  " : "bg-[#F3F3F3]"
                 }  `}
               >
                 <div>
@@ -175,7 +205,7 @@ function Occasion() {
                     </div>
                   </Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -192,7 +222,16 @@ function Occasion() {
           </div>
           <div className="flex gap-6">
             {products.map((data) => (
-              <div className="w-62 h-100 relative group ">
+              <motion.div
+                initial={{ scale: 0.7 }}
+                whileInView={{ scale: 1 }}
+                transition={{
+                  duration: 3,
+                  type: "spring",
+                }}
+                viewport={{ once: true }}
+                className="w-62 h-100 relative group "
+              >
                 <div className="w-60 h-80  rounded-2xl">
                   <img
                     src={data.image}
@@ -210,7 +249,7 @@ function Occasion() {
                     <h1>{data.price}</h1>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
