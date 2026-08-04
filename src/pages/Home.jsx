@@ -1,13 +1,16 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
+import Contact from "../components/Contact";
 
 function Home() {
   return (
     <>
       <Navbar />
       <Hero />
-      <Footer />
+      <Contact/>
+      <div className="h-16 w-full"></div>
+      <Footer/>
     </>
   );
 }

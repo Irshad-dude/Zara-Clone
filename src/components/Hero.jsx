@@ -20,7 +20,7 @@ export default function Hero() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5 }}
         viewport={{ once: true }}
-        className="w-[1450px] h-[700px] bg-[#EDC7FF] "
+        className="w-full h-[700px] bg-[#EDC7FF] "
       >
         <div className="flex p-12 gap-16 ">
           <div className="max-w-sm w-full h-[500px] bg-[#542772]/80 rounded-2xl mt-20 p-4 shadow-xl flex flex-col">
@@ -72,7 +72,7 @@ export default function Hero() {
                     }}
                     transition={{
                       duration: 1,
-                      delay: index * 0.04,
+                      delay: index * 0.02,
                       ease: "linear",
                     }}
                     viewport={{ once: true }}
@@ -129,11 +129,11 @@ export default function Hero() {
                 scale: 1,
               }}
               transition={{
-                duration: 1,
+                
                 delay: index * 0.06,
                 ease: "linear",
               }}
-              viewport={{ once: true }}
+            
             >
               {letter}
             </motion.span>

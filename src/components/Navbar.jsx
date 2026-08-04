@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 bg-white">
-      <div className=" fixed w-full h-18 bg-white px-4 flex items-center  text-[#64748B]">
+    <nav className="sticky top-0 z-50 bg-white ">
+      <div className=" fixed w-full h-18  bg-white px-4 flex items-center  text-[#64748B]">
         <Link to="/">
           <div className="font-bold text-3xl text-black ">ZARA</div>
         </Link>

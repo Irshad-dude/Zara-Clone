@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Contact from "../components/Contact";
 import screen from "../assets/screen.png";
 import screen3 from "../assets/screen3.png";
 import screen4 from "../assets/screen4.png";
@@ -253,10 +254,10 @@ function Occasion() {
             ))}
           </div>
         </div>
+      <Contact/>
       </section>
       <Footer />
     </>
   );
 }
-
 export default Occasion;

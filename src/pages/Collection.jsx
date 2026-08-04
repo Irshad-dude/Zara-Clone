@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Contact from "../components/Contact";
 import screen2 from "../assets/screen2.png";
 import screen9 from "../assets/screen9.png";
 import screen10 from "../assets/screen10.png";
@@ -186,7 +187,7 @@ export default function Collection() {
           </div>
         </div>
         {/* 3 */}
-        <div className="w-full h-120 bg-[#F3F3F3] rounded-  flex">
+        <div className="w-full h-full bg-[#F3F3F3] rounded-  flex">
           <div className="relative w-120 h-120   flex justify-center items-center">
             <div className="w-70 h-70 ">
               <img
@@ -253,6 +254,7 @@ export default function Collection() {
             </button>
           </div>
         </div>
+        <Contact/>
         <Footer />
       </section>
     </>
