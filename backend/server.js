@@ -8,6 +8,12 @@ connectDB();
 
 const app = express();
 
+app.use(express.json());
+
+const productRoutes = require("./routes/productRoutes");
+
+app.use("/api/products", productRoutes);
+
 app.get("/", (req, res) => {
   res.send("Server Running");
 });
