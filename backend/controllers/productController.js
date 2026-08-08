@@ -1,9 +1,36 @@
 const Product = require("../models/Product");
+const cloudinary = require("../config/cloudinary");
 
 // Create Product
 const createProduct = async (req, res) => {
   try {
-    const product = await Product.create(req.body);
+    let imageUrl = "";
+
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          {
+            folder: "zara-products",
+          },
+          (error, result) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+
+        stream.end(req.file.buffer);
+      });
+
+      imageUrl = result.secure_url;
+    }
+
+    const product = await Product.create({
+      ...req.body,
+      image: imageUrl,
+    });
 
     res.status(201).json({
       success: true,
@@ -17,6 +44,8 @@ const createProduct = async (req, res) => {
     });
   }
 };
+
+
 
 // Get All Products
 const getProducts = async (req, res) => {
@@ -60,17 +89,10 @@ const getProductById = async (req, res) => {
   }
 };
 
-// Update Product
 const updateProduct = async (req, res) => {
   try {
-    const product = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
+    // Find existing product
+    const product = await Product.findById(req.params.id);
 
     if (!product) {
       return res.status(404).json({
@@ -79,11 +101,45 @@ const updateProduct = async (req, res) => {
       });
     }
 
+    // If a new image is uploaded
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          {
+            folder: "zara-products",
+          },
+          (error, result) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(result);
+            }
+          }
+        );
+
+        stream.end(req.file.buffer);
+      });
+
+      product.image = result.secure_url;
+    }
+
+    // Update other fields
+    product.title = req.body.title || product.title;
+    product.subtitle = req.body.subtitle || product.subtitle;
+    product.price = req.body.price || product.price;
+    product.category = req.body.category || product.category;
+    product.description = req.body.description || product.description;
+    product.stock = req.body.stock || product.stock;
+
+    // Save updated product
+    await product.save();
+
     res.status(200).json({
       success: true,
       message: "Product updated successfully",
       product,
     });
+
   } catch (error) {
     res.status(500).json({
       success: false,
