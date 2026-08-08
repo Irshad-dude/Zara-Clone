@@ -9,10 +9,22 @@ import screen6 from "../assets/screen6.png";
 import screen18 from "../assets/screen18.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-// className="w- h- border border-black rounded- bg-[#]"
-// className="text- text-[] m"
+import { useEffect, useState} from "react";
 const text = "Dress for Every Narrative.".split("");
 function Occasion() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/api/products")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setProducts(data.products);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  }, []);
+  
   const categoryData = {
     casual: {
       title: "Casual Comforts",
@@ -65,32 +77,6 @@ function Occasion() {
       isHighlighted: false,
     },
   };
-  const products = [
-    {
-      image: screen3,
-      title: "Striped Linen Blend Shirt",
-      subtitle: "Autumn Collection",
-      price: "49.95 EUR",
-    },
-    {
-      image: screen6,
-      title: "Linen Shirt",
-      subtitle: "Modern shirt",
-      price: "79.00 EUR",
-    },
-    {
-      image: screen4,
-      title: "Classic Oxford Shirt",
-      subtitle: "Core Essentials",
-      price: "39.95 EUR",
-    },
-    {
-      image: screen5,
-      title: "Linen Oversize Shirt",
-      subtitle: "Modern Fit",
-      price: "55.00 EUR",
-    },
-  ];
   return (
     <>
       <Navbar />
@@ -222,7 +208,7 @@ function Occasion() {
             </Link>
           </div>
           <div className="flex gap-6">
-            {products.map((data) => (
+            {products.map((product) => (
               <motion.div
                 initial={{ scale: 0.7 }}
                 whileInView={{ scale: 1 }}
@@ -231,12 +217,13 @@ function Occasion() {
                   type: "spring",
                 }}
                 viewport={{ once: true }}
+                key={product._id} 
                 className="w-62 h-100 relative group "
               >
                 <div className="w-60 h-80  rounded-2xl">
                   <img
-                    src={data.image}
-                    alt={data.title}
+                    src={product.image}
+                    alt={product.title}
                     className="w-full h-80   rounded-2xl object-cover"
                   />
                   <div className="absolute top-2 right-3 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
@@ -244,10 +231,10 @@ function Occasion() {
                   </div>
                 </div>
                 <div className="mt-4">
-                  <p className="text-black text-l  m">{data.title}</p>
+                  <p className="text-black text-l  m">{product.title}</p>
                   <div className="flex justify-between w-60">
-                    <h2>{data.subtitle}</h2>
-                    <h1>{data.price}</h1>
+                    <h2>{product.subtitle}</h2>
+                    <h1>{product.price}</h1>
                   </div>
                 </div>
               </motion.div>
