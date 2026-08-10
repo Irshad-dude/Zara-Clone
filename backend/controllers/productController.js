@@ -48,15 +48,25 @@ const createProduct = async (req, res) => {
 
 
 // Get All Products
+// Get Products
 const getProducts = async (req, res) => {
   try {
-    const products = await Product.find();
+    const { page } = req.query;
+
+    const filter = {};
+
+    if (page) {
+      filter.page = page;
+    }
+
+    const products = await Product.find(filter).sort({ order: 1 });
 
     res.status(200).json({
       success: true,
       count: products.length,
       products,
     });
+
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -123,13 +133,17 @@ const updateProduct = async (req, res) => {
       product.image = result.secure_url;
     }
 
-    // Update other fields
-    product.title = req.body.title || product.title;
-    product.subtitle = req.body.subtitle || product.subtitle;
-    product.price = req.body.price || product.price;
-    product.category = req.body.category || product.category;
-    product.description = req.body.description || product.description;
-    product.stock = req.body.stock || product.stock;
+    // Update product fields
+    product.title = req.body.title ?? product.title;
+    product.subtitle = req.body.subtitle ?? product.subtitle;
+    product.price = req.body.price ?? product.price;
+    product.category = req.body.category ?? product.category;
+    product.description = req.body.description ?? product.description;
+    product.stock = req.body.stock ?? product.stock;
+
+    // Collection / page management
+    product.page = req.body.page ?? product.page;
+    product.order = req.body.order ?? product.order;
 
     // Save updated product
     await product.save();

@@ -14,7 +14,7 @@ const text = "Dress for Every Narrative.".split("");
 function Occasion() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/api/products")
+    fetch("http://localhost:3000/api/products?page=occasions")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -234,7 +234,7 @@ function Occasion() {
                   <p className="text-black text-l  m">{product.title}</p>
                   <div className="flex justify-between w-60">
                     <h2>{product.subtitle}</h2>
-                    <h1>{product.price}</h1>
+                    <h1>{product.price}$</h1>
                   </div>
                 </div>
               </motion.div>

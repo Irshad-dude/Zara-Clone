@@ -35,5 +35,14 @@ const productSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  page: {
+    type: String,
+    enum: ["collection", "occasions", "testimonials"],
+    required: true,
+  },
+  order: {
+    type: Number,
+    default: 0,
+  },
 });
 module.exports = mongoose.model("Product", productSchema);
