@@ -8,6 +8,7 @@ function Home() {
     <>
       <Navbar />
       <Hero />
+      <div className="h-16 w-full"></div>
       <Contact/>
       <div className="h-16 w-full"></div>
       <Footer/>

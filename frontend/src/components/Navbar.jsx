@@ -60,13 +60,13 @@ export default function Navbar() {
           <input
             type="text"
             placeholder="Search"
-            className="w-full h-4 pl-10 pr-4 border rounded-2xl outline-none "
+            className="w-full h-6 pl-4 pr-4 border rounded-r rounded-l  outline-none text-black  text-[15px]"
           />
 
           <img
             src={search}
             alt="Search"
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4"
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4"
           />
         </div>
         <Link to="/collection" className="text-black w-10">

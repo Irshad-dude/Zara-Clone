@@ -1,9 +1,11 @@
 import image from "../assets/image.png";
 import screen1 from "../assets/screen1.png";
 import screen2 from "../assets/screen2.png";
+import screen14 from "../assets/screen14.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 const text =
   "Fueling fashion aspirations, our platform embodies style evolution offering a curated collection that defines oo contemporary elegance.".split(
     "",
@@ -13,6 +15,19 @@ const text1 =
     "",
   );
 export default function Hero() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/api/products?page=collection")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setProducts(data.products);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  }, []);
+
   return (
     <section>
       <motion.div
@@ -23,7 +38,7 @@ export default function Hero() {
         className="w-full h-[700px] bg-[#EDC7FF] "
       >
         <div className="flex p-12 gap-16 ">
-          <div className="max-w-sm w-full h-[500px] bg-[#542772]/80 rounded-2xl mt-20 p-4 shadow-xl flex flex-col">
+          <div className="max-w-sm w-full h-[500px] bg-[#542772] rounded-2xl mt-20 p-4 shadow-xl flex flex-col">
             <div className="w-full h-full overflow-hidden rounded-xl">
               <img
                 src={image}
@@ -129,11 +144,9 @@ export default function Hero() {
                 scale: 1,
               }}
               transition={{
-                
-                delay: index * 0.06,
+                delay: index * 0.04,
                 ease: "linear",
               }}
-            
             >
               {letter}
             </motion.span>
@@ -141,7 +154,7 @@ export default function Hero() {
         </h1>
         <div className="flex w-full h-20 gap-12 justify-center  mt-8">
           <Link to="/collection">
-            <button className="w-40 h-12 rounded-full border border-black bg-[#DFFF00] flex items-center justify-center text-black hover:bg-[#b8d400] ">
+            <button className="w-40 h-12 rounded-full border border-black bg-[#DFFF00] flex items-center justify-center text-black hover:bg-[#EDC7FF] ">
               View Collection
             </button>
           </Link>
@@ -166,18 +179,21 @@ export default function Hero() {
           </motion.h1>
         </div>
       </div>
-      <div className="w-full h-150 ">
-        <div className="flex justify-between p-4  ">
-          <div className="w-60 h-12  text-black text-xl ">
-            Our New Collection
+      {/* 2 */}
+      <div className="w-full  h-240  p-6 pl-20  ">
+        <h3 className="text-[14px] text-[#5c7238] font-medium">
+          SPRING/SUMMER 24
+        </h3>
+        <div className="flex justify-between pt-5">
+          <h1 className="text-[50px] text-black font-bold">Our New Collection</h1>
+          <div className="flex gap-4 text-black text-thin">
+            <div className="w-full h-10    flex text-[12px] justify-center items-center hover:underline ">
+              VIEW ALL COLLECTION
+            </div>
+
           </div>
-          <Link to="/collection">
-            <div className="w-36 h-5  border-black border-b ">
-              View All Collection
-            </div>
-          </Link>
         </div>
-        <div className="flex gap-8 p-4">
+        <div className="w-full h-230 pt-12 flex gap-12">
           <motion.div
             initial={{ scale: 0.7 }}
             whileInView={{ scale: 1 }}
@@ -185,51 +201,83 @@ export default function Hero() {
               duration: 3,
               type: "spring",
             }}
-            viewport={{ once: true }}
-            className="flex flex-1 bg-[#E1E1F5]  rounded-3xl overflow-hidden p-5"
+            className=" group relative w-120 h-150  rounded-2xl"
           >
-            <img
-              src={screen1}
-              alt="Product"
-              className="w-[45%] object-cover rounded-2xl hover:scale-105 duration-300"
-            />
-            <div className="flex flex-col justify-center ml-8">
-              <h2 className="text-3xl font-semibold">
-                Oversize Linen Blend Shirts
-              </h2>
-              <p className="text-2xl font-medium mt-2">49.95 EUR</p>
-              <button className="mt-6 w-fit border border-black rounded-full px-6 py-2 hover:bg-black hover:text-white duration-300">
-                Buy
-              </button>
+            <div className=" absolute  w-44 h-6 bg-[#DFFF00] rounded-full text-center text-[15px]">
+              EDITORIAL PICK
             </div>
+            <img
+              src={screen14}
+              alt="Search"
+              className="w-full h-130 object-cover rounded-2xl  transition-transform duration-300 hover:scale-100"
+            />
+            <div className="absolute bottom-24 right-4 w-14 h-14 bg-[#DFFF00] rounded-full text-[30px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
+              +
+            </div>
+            <div className="flex justify-between pt-2">
+              <h1 className="text-black text-2xl  font-medium">
+                Stretchy Oxford Shirt
+              </h1>
+              <h1 className="text-[#4d5f2f] ">$185.00</h1>
+            </div>
+            <p className="text-[13px] text-  font-">
+              Modern tailoring, unparalleled comfort.
+            </p>
           </motion.div>
-          <motion.div
-            initial={{ scale: 0.7 }}
-            whileInView={{ scale: 1 }}
-            transition={{
-              duration: 3,
-              type: "spring",
-            }}
-            viewport={{ once: true }}
-            className="w-[380px] bg-[#F5F5F5] rounded-3xl p-5 flex flex-col"
-          >
-            <div className="flex justify-between items-center">
-              <div>
-                <h2 className="text-xl font-semibold">
-                  Lyocell - Linen Shirts
-                </h2>
-                <p className="text-xl font-medium mt-1">99.95 EUR</p>
-              </div>
-              <button className="border border-black rounded-full w-12 h-12 hover:bg-black hover:text-white duration-300">
+          <div className="grid grid-cols-2 gap-12 ">
+            {products.map((product) => (
+              <motion.div
+                initial={{ scale: 0.7 }}
+                whileInView={{ scale: 1 }}
+                transition={{
+                  duration: 3,
+                  type: "spring",
+                }}
+                key={product.id}
+                className="relative group w-60 h-94  rounded- borde"
+              >
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-80 object-cover rounded-2xl  transition-transform duration-300 hover:scale-100"
+                />
+                <div className="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
+                  +
+                </div>
+                <div className=" pt-2">
+                  <h1 className="text-black text-l  font-medium">
+                    {product.title}
+                  </h1>
+                  <h1 className="text-[#4d5f2f] ">{product.price}</h1>
+                </div>
+              </motion.div>
+            ))}
+
+            <motion.div
+              initial={{ scale: 0.7 }}
+              whileInView={{ scale: 1 }}
+              transition={{
+                duration: 3,
+                type: "spring",
+              }}
+              className="w-60 h-94 bg-[#E1E1F5] rounded-2xl p-6 flex flex-col gap-8"
+            >
+              <div className="w-12 h-12 bg-[#DFFF00] rounded-full text-[30px] flex justify-center items-center">
                 +
-              </button>
-            </div>
-            <img
-              src={screen2}
-              alt="Product"
-              className="w-full h-48 object-cover rounded-2xl mt-5 hover:scale-105 duration-300"
-            />
-          </motion.div>
+              </div>
+              <h1 className="text-3xl text-black  font-medium">
+                Discover the Fit Guide
+              </h1>
+              <p>
+                Find your perfect avant-garde silhouette with our interactive
+                sizing tool.
+              </p>
+              <h1 className="text- text-[#4d5f2f]   font-medium underline">
+                {" "}
+                Explore Now↗{" "}
+              </h1>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

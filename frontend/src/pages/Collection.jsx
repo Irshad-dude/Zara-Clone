@@ -99,7 +99,7 @@ export default function Collection() {
           </div>
         </div>
         {/* 2 */}
-        <div className="w-full  h-240  p-6  ">
+        <div className="w-full  h-full   p-6 pl-16  ">
           <h3 className="text-[14px] text-[#5c7238] font-medium">
             SPRING/SUMMER 24
           </h3>
@@ -114,7 +114,7 @@ export default function Collection() {
               </div>
             </div>
           </div>
-          <div className="w-full h-230 pt-12 flex gap-12">
+          <div className="w-full h-full pt-12 flex gap-12">
             <motion.div
               initial={{ scale: 0.7 }}
             whileInView={{ scale: 1 }}
@@ -195,6 +195,7 @@ export default function Collection() {
                   Explore Now↗{" "}
                 </h1>
               </motion.div>
+    
        
             </div>
           </div>

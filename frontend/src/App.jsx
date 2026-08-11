@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Home from "./pages/Home";
 import Occasion from "./pages/Occasion";
 import Testimonial from "./pages/Testimonial";
@@ -11,6 +11,21 @@ import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+  //   const carouselRef = useRef(null);
+
+  // const nextSlide = () => {
+  //   carouselRef.current.scrollBy({
+  //     left: 1450,
+  //     behavior: "smooth",
+  //   });
+  // };
+
+  // const previousSlide = () => {
+  //   carouselRef.current.scrollBy({
+  //     left: -1450,
+  //     behavior: "smooth",
+  //   });
+  // };
 
   return (
     <>
@@ -21,6 +36,7 @@ function App() {
       <Route path="/collection" element={<Collection />} />
       <Route path="/testimonials" element={<Testimonial />} />
       </Routes>
+ 
     </>
   );
 }

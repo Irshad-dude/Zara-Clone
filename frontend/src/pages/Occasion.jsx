@@ -9,7 +9,7 @@ import screen6 from "../assets/screen6.png";
 import screen18 from "../assets/screen18.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useEffect, useState} from "react";
+import { useEffect, useState, useRef} from "react";
 const text = "Dress for Every Narrative.".split("");
 function Occasion() {
   const [products, setProducts] = useState([]);
@@ -24,7 +24,6 @@ function Occasion() {
         console.log("Error:", error);
       });
   }, []);
-  
   const categoryData = {
     casual: {
       title: "Casual Comforts",
@@ -207,7 +206,9 @@ function Occasion() {
               </h1>
             </Link>
           </div>
-          <div className="flex gap-6">
+          <div
+  
+          className="flex gap-12 overflow-x-auto flex-nowrap scroll-smooth">
             {products.map((product) => (
               <motion.div
                 initial={{ scale: 0.7 }}
