@@ -10,8 +10,6 @@ import screen13 from "../assets/screen13.png";
 import screen14 from "../assets/screen14.png";
 import {motion} from "framer-motion"
 import { useEffect, useState} from "react";
-// className ="w- h-  rounded- border"
-// className ="text- text-  font-"
 const text ="The New Narrative".split("");
 const text1 ="  Our new linen-blend garments are treated with a proprietary stone-wash process, resulting in a fabric that flows like water yet retains its structural integrity. It's breathable, sustainable, and designed to age with character.".split("")
 
@@ -28,26 +26,6 @@ export default function Collection() {
       console.log("Error:", error);
     });
 }, []);
-//   const products = [
-//   {
-//     id: 1,
-//     title: "Oversize Linen Blend Shirt",
-//     price: "$145.00",
-//     image: screen13,
-//   },
-//   {
-//     id: 2,
-//     title: "Modular Utility Vest",
-//     price: "$101.00",
-//     image: screen12,
-//   },
-//   {
-//     id: 3,
-//     title: "Architectural Trouser",
-//     price: "$165.00",
-//     image: screen10,
-//   },
-// ];
   return (
     <>
       <Navbar />

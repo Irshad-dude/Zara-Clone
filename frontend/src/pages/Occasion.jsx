@@ -162,7 +162,6 @@ function Occasion() {
               </div>
             </div>
           </div>
-          {/* I continue the work from there. */}
           <div className="grid grid-cols-4 gap-4">
             {Object.entries(categoryData).map(([key, data]) => (
               <motion.div

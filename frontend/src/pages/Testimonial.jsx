@@ -6,8 +6,6 @@ import screen17 from "../assets/screen17.png";
 import screen18 from "../assets/screen18.png";
 import screen19 from "../assets/screen19.png";
 import Contact from "../components/Contact";
-// className ="w- h- bg-[#] rounded- border"
-// className ="text- text- bg-[#] font-"
 export default function Testimonial() {
   return (
     <>
