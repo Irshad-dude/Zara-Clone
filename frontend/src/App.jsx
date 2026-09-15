@@ -17,11 +17,11 @@ function App() {
     <>
       <Routes>
       {/* <Route path="/" element={<BoxAnimation/>} /> */}
-      <Route path="/" element={<ProductCard />} />
-      {/* <Route path="/" element={<Home />} />
+      <Route path="/products/:id" element={<ProductCard />} />
+      <Route path="/" element={<Home />} />
       <Route path="/occasions" element={<Occasion />} />
       <Route path="/collection" element={<Collection />} />
-      <Route path="/testimonials" element={<Testimonial />} /> */}
+      <Route path="/testimonials" element={<Testimonial />} />
       </Routes>
     </>
   );

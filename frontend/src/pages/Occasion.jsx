@@ -10,8 +10,10 @@ import screen18 from "../assets/screen18.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef} from "react";
+import { useNavigate } from "react-router-dom";
 const text = "Dress for Every Narrative.".split("");
 function Occasion() {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3000/api/products?page=occasions")
@@ -226,9 +228,10 @@ function Occasion() {
                     alt={product.title}
                     className="w-full h-80   rounded-2xl object-cover"
                   />
-                  <div className="absolute top-2 right-3 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
+                  <button onClick={() => navigate(`/products/${product._id}`)}
+                   className="absolute top-2 right-3 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
                     +
-                  </div>
+                  </button>
                 </div>
                 <div className="mt-4">
                   <p className="text-black text-l  m">{product.title}</p>

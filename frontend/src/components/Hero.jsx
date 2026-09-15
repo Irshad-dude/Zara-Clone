@@ -4,7 +4,7 @@ import screen2 from "../assets/screen2.png";
 import screen14 from "../assets/screen14.png";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 const text =
   "Fueling fashion aspirations, our platform embodies style evolution offering a curated collection that defines oo contemporary elegance.".split(
@@ -15,6 +15,7 @@ const text1 =
     "",
   );
 export default function Hero() {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   useEffect(() => {
     fetch("http://localhost:3000/api/products?page=collection")
@@ -211,9 +212,10 @@ export default function Hero() {
               alt="Search"
               className="w-full h-130 object-cover rounded-2xl  transition-transform duration-300 hover:scale-100"
             />
-            <div className="absolute bottom-24 right-4 w-14 h-14 bg-[#DFFF00] rounded-full text-[30px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
+            <button
+            className="absolute bottom-24 right-4 w-14 h-14 bg-[#DFFF00] rounded-full text-[30px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
               +
-            </div>
+            </button>
             <div className="flex justify-between pt-2">
               <h1 className="text-black text-2xl  font-medium">
                 Stretchy Oxford Shirt
@@ -241,9 +243,10 @@ export default function Hero() {
                   alt={product.title}
                   className="w-full h-80 object-cover rounded-2xl  transition-transform duration-300 hover:scale-100"
                 />
-                <div className="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
+                <button onClick={() => navigate(`/products/${product._id}`)}
+                 className="absolute bottom-16 right-2 w-10 h-10 bg-[#DFFF00] rounded-full text-[20px] font-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 ">
                   +
-                </div>
+                </button>
                 <div className=" pt-2">
                   <h1 className="text-black text-l  font-medium">
                     {product.title}
