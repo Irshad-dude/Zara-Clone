@@ -74,7 +74,7 @@ export default function ProductCard() {
             <button onClick ={handleIncrement}
              className="w-6 h-6 rounded-full bg-[#cbbe4d]  text-center">+</button>
           </div>
-          <button className="w-80 h-12 bg-black rounded-2xl text-white font-serif">Add To Cart</button>
+          <button className="w-80 h-12 bg-black rounded-2xl text-white font-serif hover:bg-[#cbbe4d]">Add To Cart</button>
         </div>
       </div>
       <Footer/>
