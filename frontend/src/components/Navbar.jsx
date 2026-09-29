@@ -3,9 +3,11 @@ import shopping from "../assets/shopping-bag.png";
 import user from "../assets/user-login.png";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 import { Routes, Route } from "react-router-dom";
 export default function Navbar() {
+  const { cartCount } = useCart();
   return (
     <nav className="sticky top-0 z-50 bg-white ">
       <div className=" fixed w-full h-18  bg-white px-4 flex items-center  text-[#64748B]">
@@ -69,7 +71,8 @@ export default function Navbar() {
             className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4"
           />
         </div>
-        <Link to="/collection" className="text-black w-10">
+        <Link to="/cart" className="text-black w-10 realtive">
+          <span className= "text-[12px] w-4 h-4 rounded-full bg-red-500 text-[#FFFFFF] flex justify-center items-center absolute top-4 right-12">{cartCount}</span>
           <img src={shopping} alt="Search" className="w-4 h-4" />
         </Link>
         <Link to="/login" className="text-black w-10">
