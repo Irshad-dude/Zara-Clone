@@ -14,7 +14,7 @@ export default function ProductCard() {
   const { addItem } = useCart();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/products/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

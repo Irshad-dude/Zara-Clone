@@ -16,7 +16,7 @@ function Occasion() {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/api/products?page=occasions")
+    fetch(`${import.meta.env.VITE_API_URL}/api/products?page=occasions`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
