@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useState, useRef } from "react";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 import Occasion from "./pages/Occasion";
 import Testimonial from "./pages/Testimonial";
 import Collection from "./pages/Collection";
@@ -21,6 +22,7 @@ function App() {
       <Route path="/products/:id" element={<ProductCard />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/occasions" element={<Occasion />} />
       <Route path="/collection" element={<Collection />} />
       <Route path="/testimonials" element={<Testimonial />} />
