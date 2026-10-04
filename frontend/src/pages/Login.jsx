@@ -1,11 +1,14 @@
-
 import { useState } from "react";
 import screen24 from "../assets/screen24.webp";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [phone, setPhone] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (phone.length !== 10) {
@@ -13,7 +16,45 @@ export default function Login() {
       return;
     }
 
-    console.log("Mobile number:", `+91${phone}`);
+    try {
+      setLoading(true);
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            phone: phone,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Login failed");
+        return;
+      }
+
+      // Save JWT token
+      localStorage.setItem("token", data.token);
+
+      // Save user information
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      console.log("Login successful:", data);
+
+      // Go to home page
+      navigate("/");
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -39,6 +80,7 @@ export default function Login() {
             <p className="text-xs tracking-[0.3em] uppercase mb-3">
               Zara / 2026
             </p>
+
             <h2 className="text-4xl lg:text-5xl font-serif leading-tight">
               A study in
               <br />
@@ -46,24 +88,30 @@ export default function Login() {
             </h2>
           </div>
         </div>
+
         <div className="flex flex-col justify-between px-7 py-10 sm:px-12 md:px-10 lg:px-16 md:py-14">
+
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-serif font-bold tracking-[-0.08em] text-black">
               ZARA
             </h1>
+
             <p className="text-[9px] tracking-[0.4em] text-gray-400 uppercase mt-3">
               Official online store
             </p>
           </div>
 
           <div className="w-full max-w-sm mx-auto my-12">
+
             <div className="mb-10">
               <p className="text-[10px] tracking-[0.3em] text-gray-400 uppercase mb-3">
                 Welcome
               </p>
+
               <h2 className="text-2xl font-serif text-black">
                 Sign in or register
               </h2>
+
               <p className="text-sm text-gray-500 mt-3 leading-6">
                 Enter your mobile number to receive a
                 one-time password.
@@ -71,6 +119,7 @@ export default function Login() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-8">
+
               <div>
                 <label
                   htmlFor="phone"
@@ -80,6 +129,7 @@ export default function Login() {
                 </label>
 
                 <div className="flex items-center border-b border-gray-300 focus-within:border-black transition-colors duration-300">
+
                   <span className="text-sm text-black pr-4 border-r border-gray-200">
                     +91
                   </span>
@@ -101,6 +151,7 @@ export default function Login() {
                     className="w-full bg-transparent outline-none px-4 py-3 text-sm tracking-[0.12em] text-black placeholder:text-gray-300"
                     required
                   />
+
                 </div>
 
                 <p className="text-[10px] text-gray-400 mt-3">
@@ -110,28 +161,39 @@ export default function Login() {
 
               <button
                 type="submit"
-                className="w-full h-12 bg-black text-white text-[10px] tracking-[0.25em] uppercase hover:bg-[#333] active:scale-[0.99] transition-all duration-300"
+                disabled={loading}
+                className="w-full h-12 bg-black text-white text-[10px] tracking-[0.25em] uppercase hover:bg-[#333] active:scale-[0.99] transition-all duration-300 disabled:opacity-50"
               >
-                Continue
-                <span className="ml-3">→</span>
+                {loading ? "Signing in..." : "Continue"}
+                {!loading && <span className="ml-3">→</span>}
               </button>
+
             </form>
 
             <p className="text-[10px] text-gray-400 leading-5 mt-8 text-center">
               By continuing, you agree to our{" "}
-              <a href="#" className="text-black underline underline-offset-4">
+              <a
+                href="#"
+                className="text-black underline underline-offset-4"
+              >
                 Terms & Conditions
               </a>{" "}
               and{" "}
-              <a href="#" className="text-black underline underline-offset-4">
+              <a
+                href="#"
+                className="text-black underline underline-offset-4"
+              >
                 Privacy Policy
               </a>.
             </p>
+
           </div>
+
           <div className="flex justify-between items-center border-t border-gray-100 pt-5 text-[9px] tracking-[0.15em] text-gray-400 uppercase">
             <span>India / English</span>
             <span>© Zara 2026</span>
           </div>
+
         </div>
       </div>
     </section>

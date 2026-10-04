@@ -3,90 +3,126 @@ import { createContext, useContext, useEffect, useState } from "react";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
+  const savedUser = localStorage.getItem("user");
+  const user = savedUser ? JSON.parse(savedUser) : null;
+
+  const cartKey = user ? `zara-cart-${user.id}` : null;
+
   const [cartItems, setCartItems] = useState(() => {
     try {
-      const savedCart = localStorage.getItem("zara-cart");
+      if (!cartKey) return [];
+
+      const savedCart = localStorage.getItem(cartKey);
+
       return savedCart ? JSON.parse(savedCart) : [];
     } catch {
       return [];
     }
   });
 
+
   useEffect(() => {
-    localStorage.setItem("zara-cart", JSON.stringify(cartItems));
-  }, [cartItems]);
-
-const addItem = (product, size, quantity = 1) => {
-  if (!size) {
-    alert("Please select a size");
-    return;
-  }
-
-  if (quantity < 1) return;
-
-  setCartItems((prevItems) => {
-    const existingItem = prevItems.find(
-      (item) =>
-        item.productId === product._id &&
-        item.size === size
-    );
-
-    if (existingItem) {
-      return prevItems.map((item) =>
-        item.productId === product._id &&
-        item.size === size
-          ? {
-              ...item,
-              quantity: item.quantity + quantity,
-            }
-          : item
-      );
+    if (!cartKey) {
+      setCartItems([]);
+      return;
     }
 
-    return [
-      ...prevItems,
-      {
-        productId: product._id,
-        title: product.title,
-        image: product.image,
-        price: product.price,
-        size,
-        quantity,
-      },
-    ];
-  });
-};
+    try {
+      const savedCart = localStorage.getItem(cartKey);
+
+      setCartItems(savedCart ? JSON.parse(savedCart) : []);
+    } catch {
+      setCartItems([]);
+    }
+  }, [cartKey]);
+
+  useEffect(() => {
+    if (!cartKey) return;
+
+    localStorage.setItem(
+      cartKey,
+      JSON.stringify(cartItems)
+    );
+  }, [cartItems, cartKey]);
+
+  const addItem = (product, size, quantity = 1) => {
+    if (!size) {
+      alert("Please select a size");
+      return;
+    }
+
+    if (quantity < 1) return;
+
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find(
+        (item) =>
+          item.productId === product._id &&
+          item.size === size
+      );
+
+      if (existingItem) {
+        return prevItems.map((item) =>
+          item.productId === product._id &&
+          item.size === size
+            ? {
+                ...item,
+                quantity: item.quantity + quantity,
+              }
+            : item
+        );
+      }
+
+      return [
+        ...prevItems,
+        {
+          productId: product._id,
+          title: product.title,
+          image: product.image,
+          price: product.price,
+          size,
+          quantity,
+        },
+      ];
+    });
+  };
+
   const removeItem = (productId, size) => {
     setCartItems((prevItems) =>
       prevItems.filter(
-        (item) => !(item.productId === productId && item.size === size),
-      ),
+        (item) =>
+          !(item.productId === productId && item.size === size)
+      )
     );
   };
+
   const updateQuantity = (productId, size, quantity) => {
     if (quantity < 1) return;
+
     setCartItems((prevItems) =>
       prevItems.map((item) =>
-        item.productId === productId && item.size === size
+        item.productId === productId &&
+        item.size === size
           ? { ...item, quantity }
-          : item,
-      ),
+          : item
+      )
     );
   };
 
   const clearCart = () => {
     setCartItems([]);
   };
+
   const cartCount = cartItems.reduce(
-    (total,item) => total + item.quantity,
+    (total, item) => total + item.quantity,
     0
   );
 
   const cartTotal = cartItems.reduce(
-    (total,item) => total + item.price * item.quantity,0
+    (total, item) => total + item.price * item.quantity,
+    0
   );
 
-    return (
+  return (
     <CartContext.Provider
       value={{
         cartItems,
@@ -102,6 +138,7 @@ const addItem = (product, size, quantity = 1) => {
     </CartContext.Provider>
   );
 };
+
 export const useCart = () => {
   const context = useContext(CartContext);
 

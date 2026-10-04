@@ -1,12 +1,22 @@
 import search from "../assets/search-2.png";
 import shopping from "../assets/shopping-bag.png";
 import user from "../assets/user-login.png";
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-
-import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 export default function Navbar() {
+const navigate = useNavigate();
+
+const [currentUser, setCurrentUser] = useState(() => {
+  const savedUser = localStorage.getItem("user");
+  return savedUser ? JSON.parse(savedUser) : null;
+});
+
+function handleLogout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "/login";
+}
   const { cartCount } = useCart();
   return (
     <nav className="sticky top-0 z-50 bg-white ">
@@ -75,9 +85,18 @@ export default function Navbar() {
           <span className= "text-[12px] w-4 h-4 rounded-full bg-red-500 text-[#FFFFFF] flex justify-center items-center absolute top-4 right-12">{cartCount}</span>
           <img src={shopping} alt="Search" className="w-4 h-4" />
         </Link>
-        <Link to="/login" className="text-black w-10">
-          <img src={user} alt="Search" className="w-4 h-4" />
-        </Link>
+       {currentUser ? (
+  <button
+    onClick={handleLogout}
+    className="text-black w-10"
+  >
+    <img src={user} alt="Logout" className="w-4 h-4" />
+  </button>
+) : (
+  <Link to="/login" className="text-black w-10">
+    <img src={user} alt="Login" className="w-4 h-4" />
+  </Link>
+)}
       </div>
     </nav>
   );
